@@ -10,7 +10,7 @@ else{
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="estilos.css">
+<link rel="stylesheet" type="text/css" href="estilos1.css">
 </head>
 <body>
 <?php
@@ -29,7 +29,7 @@ closedir($directorio);
 $libre=$espacio-$ocupado;
 echo "<table style='width: 100%'>";
 echo"<tr><th>Usuario</th><th>Espacio contratado</th><th>Espacio Libre</th><th>Visor de Imágenes</th></tr>";
-echo"<tr><td>$usuario</td><td>$espacio</td><td>$libre</td><td><a href='visorimagenes.php'>Ver fotos</a></td></tr>";
+echo"<tr><td>$usuario</td><td>$espacio Kb</td><td>$libre Kb</td><td><a href='visorimagenes.php'>Ver fotos</a></td></tr>";
 echo"</table>";
 function archivo_ver($nombre_archivo) {
     if (substr("$nombre_archivo",-4) == ".txt" || substr("$nombre_archivo",-5) == ".html" || substr("$nombre_archivo",-4) == ".php"|| substr("$nombre_archivo",-3) == ".sh") {
@@ -47,6 +47,7 @@ echo "<th>Nombre archivo</th>";
 echo "<th>Tamaño archivo</th>";
 echo "<th>Ver</th>";
 echo "<th>Editar</th>";
+echo "<th>Descargar</th>";
 echo "<th>Borrar</th>";
 echo "</tr>";
 $directorio = opendir("./almacen/$usuario");
@@ -57,6 +58,7 @@ while (($nombre_archivo = readdir($directorio)) != FALSE) {
                 echo "<td>" . filesize("./almacen/$usuario/$nombre_archivo") / 1024 . " kb" . "</td>";
                 echo "<td>"  . archivo_ver($nombre_archivo) . "</td>";
                 echo "<td>"  . archivo_editar($nombre_archivo) . "</td>";
+                echo "<td>" . "<a href= 'descargar.php?fichero=$nombre_archivo'><img class='icono' src='imagenes/descargar.jpg'/></a>"."</td>";
                 echo "<td>" . "<a href= 'borrar.php?fichero=$nombre_archivo'><img class='icono' src='imagenes/papelera.png'/></a>"."</td>";
             echo "</tr>";
         
@@ -66,7 +68,7 @@ echo "</table>";
 closedir($directorio);
 ?>
 <form action="subirfichero.php" method="post" enctype="multipart/form-data">
-    Selecciona archivo para subir:
+    <h4>Selecciona un archivo para subir:</h4>
     <input type="file" name="fichero">
     <input type="submit" value="Subir Archivo" name="submit">
 </form>

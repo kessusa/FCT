@@ -23,10 +23,14 @@ if(isset($_POST["enviar"]))
             header("Location: espacio.php");
         }
         else{
+
             echo "Usuario y/o clave incorrecta.";
         }
     }
     elseif ($_POST["enviar"] == "Registrarse"){
+        $usuario = $_POST["usuarior"];
+        $clave = password_hash ($_POST["claver"],PASSWORD_BCRYPT);
+
         // 1 comprobar que el usuario no exista
         $sqlBuscarUsuario = "SELECT usuario FROM usuarios where usuario = '$usuario'";
         $resultado = mysqli_query($conn, $sqlBuscarUsuario);

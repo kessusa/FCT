@@ -1,6 +1,6 @@
 <?php
 // Create connection
-$conn = mysqli_connect("localhost","root","root","registro");
+$conn = mysqli_connect("localhost","root","root","registrados");
 // Check connection
 if (!$conn) {
     die("Conexión fallida " . mysqli_connect_error());
