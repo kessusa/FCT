@@ -12,7 +12,7 @@ else{
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="estilos.css">
+<link rel="stylesheet" type="text/css" href="estilos1.css">
 </head>
 <body>
 <?php 
